@@ -3,7 +3,7 @@
 use App\Http\Controllers\balasanControler;
 use App\Http\Controllers\diskusiControler;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +55,18 @@ Route::delete('/korban/delete/{id}', [korbanControler::class, 'destroy'])->name(
 
 Route::get('/laporan', [LaporanControler::class, 'index'])->name('laporan')->middleware('auth');
 Route::post('/laporan-cetak', [LaporanControler::class, 'cetak'])->name('laporan.cetak')->middleware('auth');
+
+// Route untuk mengaktifkan mode maintenance
+Route::get('/maintenance/on', function () {
+	Artisan::call('down --secret="123"');
+	return redirect('/dashboard');
+});
+
+// Route untuk menonaktifkan mode maintenance
+Route::get('/maintenance/off', function () {
+	Artisan::call('up');
+	return  redirect('/dashboard');
+});
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
