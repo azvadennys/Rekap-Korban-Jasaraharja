@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('layouts.navbars.auth.topnav', ['title' => 'Tambah Korban'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Edit Korban'])
     <div class="container-fluid mt-6">
         <div class="row">
             <div class="row justify-content-center">
@@ -11,7 +11,7 @@
                     <div class="card z-index-0 fadeIn3 fadeInBottom mb-5">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-info shadow-info border-radius-lg py-3 pe-1">
-                                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Tambah Korban</h4>
+                                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Edit Korban</h4>
                             </div>
                         </div>
                         <div class="card-body">

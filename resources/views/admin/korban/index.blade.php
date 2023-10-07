@@ -55,7 +55,8 @@
                     <div class="card-body p-0">
                         <div class="row justify-content-center ">
                             <div class="table-responsive col-10">
-                                <table id="table_id" class="display table align-items-center table-hover" id=""
+                                <table id="table_id"
+                                    class=" table align-items-center table-hover table-striped table-bordered"
                                     style="width: 100%">
                                     <thead class="thead-light">
                                         <tr class="text-center">
@@ -67,7 +68,7 @@
                                             <th scope="col">Diskon</th>
                                             <th scope="col">Total</th>
                                             <th scope="col">Tanggal Transaksi</th>
-                                            <th class="text-right pr-6">Action</th>
+                                            <th class="text-right pr-6" data-orderable="false">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

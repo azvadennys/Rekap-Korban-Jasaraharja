@@ -49,9 +49,9 @@
                     </div>
 
                     <div class="card-body p-0">
-                        <div class="row  ">
+                        <div class="row  justify-content-center">
 
-                            <div class="col-6 mx-4">
+                            <div class="col-6 mx-4 ">
                                 <form action="{{ route('laporan.cetak') }}" method="post" target="_blank">
                                     @csrf
 

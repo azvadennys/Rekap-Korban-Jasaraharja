@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="{{ asset('DataTables') }}/datatables.min.css" rel="stylesheet" />
-
+    {{-- <link href="{{ asset('css') }}/mdb.min.css" rel="stylesheet" /> --}}
     <script src="{{ asset('DataTables') }}/datatables.min.js"></script>
 </head>
 
@@ -51,7 +51,7 @@
     <script src="{{ asset('assets') }}/js/core/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="{{ asset('assets') }}/js/plugins/smooth-scrollbar.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/core//mdb.min.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('assets/js/core/mdb.min.js') }}"></script> --}}
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
