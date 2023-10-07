@@ -19,7 +19,7 @@ class CheckDomain
     public function handle(Request $request, Closure $next)
     {
 
-        $allowedDomains = ['127.0.0.1:8000', 'jasaraharja.sipadek-kanwil-bpn-bengkulu.my.id']; // Daftar domain yang diperbolehkan
+        $allowedDomains = ['jasaraharja.sipadek-kanwil-bpn-bengkulu.my.id']; // Daftar domain yang diperbolehkan
         $ipAddress = $request->ip();
         $userAgent = $request->userAgent();
 
