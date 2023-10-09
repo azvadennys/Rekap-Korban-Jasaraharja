@@ -61,7 +61,7 @@ Route::post('/laporan-cetak', [LaporanControler::class, 'cetak'])->name('laporan
 Route::get('/maintenance/on', function () {
 	$secretCode = 'azvadenTech'; // Ganti dengan secret code yang sesuai
 	$message = '*Project: SI Jasaraharja*' . PHP_EOL .
-		'Website dalam mode Maintenance' . PHP_EOL .
+		'_Website dalam mode Maintenance_❌' . PHP_EOL .
 		'Domain: ' . request()->getHttpHost() . PHP_EOL .
 		'Secret Code: ' . $secretCode;
 	$chat_id = '5163645049'; // Ganti dengan ID chat yang sesuai
@@ -69,6 +69,7 @@ Route::get('/maintenance/on', function () {
 	Telegram::sendMessage([
 		'chat_id' => $chat_id,
 		'text' => $message,
+		'parse_mode' => 'Markdown',
 	]);
 
 	Artisan::call("down --secret={$secretCode}");
@@ -81,13 +82,14 @@ Route::get('/maintenance/on', function () {
 Route::get('/maintenance/off', function () {
 	Artisan::call('up');
 	$message = '*Project: SI Jasaraharja*' . PHP_EOL .
-		'Website dalam mode Non-Maintenance' . PHP_EOL .
+		'_Website dalam mode Non-Maintenance_✅' . PHP_EOL .
 		'Domain: ' . request()->getHttpHost();
 	$chat_id = '5163645049'; // Ganti dengan ID chat yang sesuai
 
 	Telegram::sendMessage([
 		'chat_id' => $chat_id,
 		'text' => $message,
+		'parse_mode' => 'Markdown',
 	]);
 	return  redirect('/dashboard');
 });

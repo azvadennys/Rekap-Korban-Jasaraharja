@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('umur');
             $table->string('jenis_kelamin');
             $table->string('no_LP');
+            $table->string('lamarawat');
             $table->bigInteger('biaya');
             $table->bigInteger('diskon');
             $table->bigInteger('setelah_diskon');

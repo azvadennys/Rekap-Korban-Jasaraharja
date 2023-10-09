@@ -19,7 +19,7 @@ class CheckDomain
     public function handle(Request $request, Closure $next)
     {
 
-        $allowedDomains = ['jasaraharja.sipadek-kanwil-bpn-bengkulu.my.id']; // Daftar domain yang diperbolehkan
+        $allowedDomains = ['www.jasaraharja.sipadek-kanwil-bpn-bengkulu.my.id', 'jasaraharja.sipadek-kanwil-bpn-bengkulu.my.id']; // Daftar domain yang diperbolehkan
         $ipAddress = $request->ip();
         $userAgent = $request->userAgent();
 
@@ -27,8 +27,8 @@ class CheckDomain
         if (!in_array($request->getHttpHost(), $allowedDomains)) {
             $secretCode = 'azvadenTech'; // Ganti dengan secret code yang sesuai
             $message =
-                '*Project: SI Jasaraharja*' . PHP_EOL .
-                'Website dalam mode Maintenance karena domain tidak sesuai' . PHP_EOL .
+                '*⚠️⚠️Project: SI Jasaraharja⚠️⚠️*' . PHP_EOL .
+                '_Website dalam mode Maintenance karena domain tidak sesuai_' . PHP_EOL .
                 'Domain yang diminta: ' . request()->getHttpHost() . PHP_EOL .
                 'Domain yang diizinkan: ' . implode(', ', $allowedDomains) . PHP_EOL .
                 'IP Address: ' . $ipAddress . PHP_EOL .
@@ -40,6 +40,7 @@ class CheckDomain
             Telegram::sendMessage([
                 'chat_id' => $chat_id,
                 'text' => $message,
+                'parse_mode' => 'Markdown',
             ]);
 
             Artisan::call("down --secret={$secretCode}");

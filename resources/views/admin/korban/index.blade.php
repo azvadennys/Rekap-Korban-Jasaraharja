@@ -67,6 +67,7 @@
                                             <th scope="col">Biaya Rawatan</th>
                                             <th scope="col">Diskon</th>
                                             <th scope="col">Total</th>
+                                            <th scope="col">Lama Rawatan</th>
                                             <th scope="col">Tanggal Transaksi</th>
                                             <th class="text-right pr-6" data-orderable="false">Action</th>
                                         </tr>
@@ -87,7 +88,7 @@
                                                     {{ $index->nama }}
                                                 </td>
                                                 <td>
-                                                    {{ $index->umur }}
+                                                    {{ $index->umur }} Tahun
                                                 </td>
                                                 <td>
                                                     <?php echo 'Rp ' . number_format($index->biaya, 0, ',', '.'); ?>
@@ -99,6 +100,17 @@
                                                     <?php echo 'Rp ' . number_format($index->setelah_diskon, 0, ',', '.'); ?>
                                                 </td>
 
+                                                <td>
+                                                    @php
+                                                        $rentangTanggalArray = explode('-', $index->lamarawat);
+                                                        
+                                                        // Menghapus spasi ekstra dari hasil pemisahan
+                                                        $tanggalAwal = trim($rentangTanggalArray[0]);
+                                                        $tanggalAkhir = trim($rentangTanggalArray[1]);
+                                                        
+                                                        echo date('d F Y', strtotime($tanggalAwal)). ' sd ' . date('d F Y', strtotime($tanggalAkhir));
+                                                    @endphp
+                                                </td>
                                                 <td>
                                                     {{ date('d F Y', strtotime($index->created_at)) }}
                                                 </td>

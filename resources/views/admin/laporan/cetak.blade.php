@@ -13,6 +13,28 @@
         h3 {
             text-transform: uppercase;
         }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+            /* Posisi horizontal */
+            vertical-align: middle;
+            /* Posisi vertikal */
+            horizontal-align: middle;
+            /* Posisi vertikal */
+        }
+
+        tbody {
+            font-size: 12px;
+            /* Ganti dengan ukuran font yang diinginkan */
+        }
+
+        thead {
+            font-size: 14px;
+            /* Ganti dengan ukuran font yang diinginkan */
+        }
     </style>
 
 </head>
@@ -26,17 +48,17 @@
             </header>
             <table class="table table-striped table-bordered mt-4">
                 <thead class="thead-light">
-                    <tr class="text-center">
+                    <tr class="text-center" colspan='2'>
                         <th scope="col">No</th>
                         <th scope="col">Nama Korban</th>
                         <th scope="col">Umur</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Biaya Rawatan</th>
-                        <th scope="col">Diskon</th>
-                        <th scope="col">Jumlah</th>
+                        <th scope="col">Lama Rawatan</th>
+                        <th scope="col">Tanggal Transaksi</th>
+                        <th scope="col" style="width: 130px;">Biaya Rawatan</th>
+                        <th scope="col" style="width: 130px;">Diskon</th>
+                        <th scope="col" style="width: 130px;">Jumlah</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <?php
                     $i = 1;
@@ -45,10 +67,21 @@
                     $totalSetelahDiskon = 0;
                     ?>
                     @foreach ($korban as $key => $index)
-                        <tr class="text-left">
+                        <tr class="text-left" colspan='2'>
                             <td class="text-center">{{ $i++ }}</td>
                             <td>{{ $index->nama }}</td>
                             <td class="text-center">{{ $index->umur }}</td>
+                            <td class="text-center">
+                                @php
+                                    $rentangTanggalArray = explode('-', $index->lamarawat);
+                                    
+                                    // Menghapus spasi ekstra dari hasil pemisahan
+                                    $tanggalAwal = trim($rentangTanggalArray[0]);
+                                    $tanggalAkhir = trim($rentangTanggalArray[1]);
+                                    
+                                    echo date('d F Y', strtotime($tanggalAwal)) . ' sd ' . date('d F Y', strtotime($tanggalAkhir));
+                                @endphp
+                            </td>
                             <td class="text-center">{{ date('d F Y', strtotime($index->created_at)) }}</td>
                             <td class="text-right">Rp {{ number_format($index->biaya, 0, ',', '.') }}</td>
                             <td class="text-right">Rp {{ number_format($index->diskon, 0, ',', '.') }}</td>
@@ -60,8 +93,8 @@
                             $totalSetelahDiskon += $index->setelah_diskon;
                         @endphp
                     @endforeach
-                    <tr class="text-left">
-                        <td colspan="4" class="text-center"><b>TOTAL</b></td>
+                    <tr class="text-left" colspan='2'>
+                        <td colspan="5" class="text-center"><b>TOTAL</b></td>
 
                         <td class="text-right"><b>Rp {{ number_format($totalBiaya, 0, ',', '.') }}</b></td>
                         <td class="text-right"><b>Rp {{ number_format($totalDiskon, 0, ',', '.') }}</b></td>
@@ -123,9 +156,9 @@
                 })
                 .save();
 
-            setTimeout(function() {
-                window.close();
-            }, 2000);
+            // setTimeout(function() {
+            //     window.close();
+            // }, 2000);
         };
     </script>
 
