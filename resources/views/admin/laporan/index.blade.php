@@ -60,6 +60,7 @@
                                         <select class="form-control" name="laporan_type" id="laporan_type">
                                             <option value="harian">Harian</option>
                                             <option value="bulanan">Bulanan</option>
+                                            <option value="rentang">Rentang Tanggal</option>
                                         </select>
                                     </div>
 
@@ -73,6 +74,12 @@
                                     <div class="form-group" id="bulan_input" style="display: none;">
                                         <label for="bulan">Pilih Bulan:</label>
                                         <input type="month" class="form-control" name="bulan" id="bulan">
+                                    </div>
+
+                                    <!-- Input bulan dan tahun untuk laporan bulanan dan tahunan -->
+                                    <div class="form-group" id="rentang_input" style="display: none;">
+                                        <label for="bulan">Pilih Bulan:</label>
+                                        <input type="text" class="form-control" name="rentang" id="rentang">
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Buat Laporan</button>
@@ -105,6 +112,21 @@
     @endsection
 
     @push('custom_js')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <script>
+        $(function() {
+            $('input[name="rentang"]').daterangepicker({
+                opens: 'left'
+            }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
+                    .format('YYYY-MM-DD'));
+            });
+        });
+    </script>
         <script>
             $(document).ready(function() {
 
@@ -118,14 +140,21 @@
             const laporanType = document.getElementById('laporan_type');
             const tanggalHarian = document.getElementById('tanggal_harian');
             const bulanTahun = document.getElementById('bulan_input');
+            const rentang = document.getElementById('rentang_input');
 
             laporanType.addEventListener('change', function() {
                 if (laporanType.value === 'harian') {
                     tanggalHarian.style.display = 'block';
                     bulanTahun.style.display = 'none';
+                    rentang.style.display = 'none';
                 } else if (laporanType.value === 'bulanan') {
                     tanggalHarian.style.display = 'none';
                     bulanTahun.style.display = 'block';
+                    rentang.style.display = 'none';
+                } else if (laporanType.value === 'rentang') {
+                    tanggalHarian.style.display = 'none';
+                    bulanTahun.style.display = 'none';
+                    rentang.style.display = 'block';
                 }
                 // Mengambil semua elemen input yang memiliki style display: block
                 const blockElements = document.querySelectorAll('[style*="display: block"]');

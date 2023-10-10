@@ -44,7 +44,7 @@
         <div class="container">
             <header>
                 <h3 class="mt-4 text-center">Rekapitulasi Pembayaran Overbooking</h3>
-                <h4 class="mt-2 text-center">{{ $waktu }}</h4>
+                <h5 class="mt-2 text-center">{{ $waktu }}</h5>
             </header>
             <table class="table table-striped table-bordered mt-4">
                 <thead class="thead-light">
