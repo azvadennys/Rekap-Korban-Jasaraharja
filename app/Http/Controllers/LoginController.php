@@ -44,7 +44,6 @@ class LoginController extends Controller
             Telegram::sendMessage([
                 'chat_id' => $chat_id,
                 'text' => $message,
-                'parse_mode' => 'Markdown',
             ]);
             return redirect()->intended('dashboard');
         }
