@@ -73,6 +73,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Nomor
+                                                Handphone</label>
+                                            <input class="form-control" type="tel" name="no_hp" id="no_hp"
+                                                minlength="10" value="{{ old('no_hp', $index->no_hp) }}" required>
+                                            <span class="text-small">Example : 6282175831680</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Biaya Rawatan</label>
                                             <input class="form-control" type="number" name="biaya" id="biaya"
                                                 value="{{ old('biaya', $index->biaya) }}" required>

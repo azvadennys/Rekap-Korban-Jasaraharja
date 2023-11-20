@@ -93,6 +93,7 @@ class korbanControler extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'no_LP' => $request->no_LP,
             'lamarawat' => $request->lamarawat,
+            'no_hp' => $request->no_hp,
             'biaya' => $request->biaya,
             'diskon' => $request->diskon,
             'setelah_diskon' => $request->setelah_diskon,

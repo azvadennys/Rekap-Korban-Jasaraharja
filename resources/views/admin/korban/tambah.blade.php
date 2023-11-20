@@ -67,6 +67,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Nomor
+                                                Handphone</label>
+                                            <input class="form-control" type="tel" name="no_hp" id="no_hp"
+                                                minlength="10" required>
+                                                <span class="text-small">Example : 6282175831680</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Biaya Rawatan</label>
                                             <input class="form-control" type="number" name="biaya" id="biaya"
                                                 required>

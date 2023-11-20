@@ -74,7 +74,7 @@
                                     </thead>
                                     <tbody>
                                         @php
-                                            
+
                                             $i = 1;
                                         @endphp
                                         @foreach ($korban as $key => $index)
@@ -103,12 +103,12 @@
                                                 <td>
                                                     @php
                                                         $rentangTanggalArray = explode('-', $index->lamarawat);
-                                                        
+
                                                         // Menghapus spasi ekstra dari hasil pemisahan
                                                         $tanggalAwal = trim($rentangTanggalArray[0]);
                                                         $tanggalAkhir = trim($rentangTanggalArray[1]);
-                                                        
-                                                        echo date('d F Y', strtotime($tanggalAwal)). ' sd ' . date('d F Y', strtotime($tanggalAkhir));
+
+                                                        echo date('d F Y', strtotime($tanggalAwal)) . ' sd ' . date('d F Y', strtotime($tanggalAkhir));
                                                     @endphp
                                                 </td>
                                                 <td>
