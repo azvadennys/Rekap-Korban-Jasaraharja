@@ -94,6 +94,7 @@ class korbanControler extends Controller
             'no_LP' => $request->no_LP,
             'lamarawat' => $request->lamarawat,
             'no_hp' => $request->no_hp,
+            'created_at' => $request->created_at,
             'biaya' => $request->biaya,
             'diskon' => $request->diskon,
             'setelah_diskon' => $request->setelah_diskon,

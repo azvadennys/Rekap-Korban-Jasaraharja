@@ -76,6 +76,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Tanggal Transaksi</label>
+                                            <input class="form-control" type="date" name="created_at" id="created_at"required>
+                                               
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Biaya Rawatan</label>
                                             <input class="form-control" type="number" name="biaya" id="biaya"
                                                 required>

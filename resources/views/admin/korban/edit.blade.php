@@ -82,6 +82,16 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Tanggal
+                                                Transaksi</label>
+                                            <input class="form-control" type="date" name="created_at"
+                                                id="created_at"value="{{ old('created_at', date('Y-m-d', strtotime($index->created_at))) }}"
+                                                required>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Biaya Rawatan</label>
                                             <input class="form-control" type="number" name="biaya" id="biaya"
                                                 value="{{ old('biaya', $index->biaya) }}" required>
@@ -97,7 +107,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Biaya Rawatan Setelah
+                                            <label for="example-text-input" class="form-control-label">Biaya Rawatan
+                                                Setelah
                                                 Diskon</label>
                                             <input class="form-control" type="text" id="setelah_diskon" readonly>
                                             <input class="form-control" type="number" name="setelah_diskon"
